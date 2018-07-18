@@ -7,9 +7,14 @@
 void testInitGame(){
 	struct gameData * myData =  buildGameData();
 	int numPlayers = myData->numPlayers;
-	int kingdomCards[10];
-
-	initializeGame
+	int kingdomCard[10];
+  memcpy(kingdomCard, myData->kindomCards, sizeof(kindomCards));
+  int seed = myData->seed;
+  struct gameState* state = myData->state;
+  
+  //int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed, struct gameState *state);
+	initializeGame(numPlayers, kingdomCards, seed, state);
+  
 }
 
 int main(){
