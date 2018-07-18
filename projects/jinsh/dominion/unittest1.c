@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <dominion.h>
-#include <gameSet.h>
+#include "dominion.h"
+#include "gameSet.h"
 
 
 void testInitGame(){
 	struct gameData * myData =  buildGameData();
 	int numPlayers = myData->numPlayers;
 	int kingdomCard[10];
-  memcpy(kingdomCard, myData->kindomCards, sizeof(kindomCards));
+  memcpy(kingdomCard, myData->kingdomCards, sizeof(kingdomCards));
   int seed = myData->seed;
   struct gameState* state = myData->state;
   

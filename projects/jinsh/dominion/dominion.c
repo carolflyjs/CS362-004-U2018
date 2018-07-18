@@ -649,6 +649,7 @@ int adventurerEffect(struct gameState *state, int handPos)
   int drawntreasure = 0;
   int currentPlayer = whoseTurn(state);
   int cardDrawn;
+  int temphand[MAX_HAND];// moved above the if statement
   int z = 0;
   while(drawntreasure<2){
     if (state->deckCount[currentPlayer] < 1){

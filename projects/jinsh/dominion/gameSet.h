@@ -5,9 +5,9 @@
 
 struct gameData {
 	struct gameState* state;
-	int kindomCards[10];
+	int kingdomCards[10];
 	int seed;
-	struct numPlayers;
+	int numPlayers;
 };
 
 #endif
