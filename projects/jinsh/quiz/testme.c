@@ -5,17 +5,31 @@
 
 char inputChar()
 {
-    // generate either 0 or 1
+    // generate a random char
     int r = rand() % 128;
     char c = (char) r;
-
     return c;
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+	// set string length (not including \0)
+	int len = 5;
+
+	// set memory
+	char *str = malloc(len + 1);
+	
+	// set termination char
+	str[len] = 0;
+	
+	// generate each char (small letter only)
+	int i;
+	for (i = 0; i < len; i++) {
+		int r = rand() % 26;
+		char c = 'a' + r;
+		str[i] = c;
+	}
+    return str;
 }
 
 void testme()
