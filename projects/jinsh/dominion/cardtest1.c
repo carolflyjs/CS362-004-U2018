@@ -3,7 +3,7 @@
 #include "dominion.h"
 #include "rngs.h"
 
-void testSmithy(){
+void testSmithyEffect(){
 	
 	struct gameState *state = (struct gameState *) malloc (sizeof(struct gameState));
 	int kingdomCards[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy};
@@ -33,9 +33,9 @@ void testSmithy(){
 
 	if (!cardEffect(smithy, choice1, choice2, choice3, state, handPos, &bonus)
 		&& state->handCount[0] - tempState->handCount[0] + 1  == 3)
-		printf("testSmithy(): PASS when 3 cards are drawn\n");
+		printf("smithyEffect(): PASS when 3 cards are drawn\n");
 	else
-		printf("testSmithy(): FAIL when 3 cards are drawn\n");
+		printf("smithyEffect(): FAIL when 3 cards are drawn\n");
 
 	// test if discard pile is shuffled when empty
 	initializeGame(4, kingdomCards, 6, state);
@@ -56,15 +56,15 @@ void testSmithy(){
 	
 	if (!cardEffect(smithy, choice1, choice2, choice3, state, handPos, &bonus)
 		&& state->discardCount[0] == 0)
-		printf("testSmithy(): PASS when discard pile is shuffled when deck is empty\n");
+		printf("smithyEffect(): PASS when discard pile is shuffled when deck is empty\n");
 	else
-		printf("testSmithy(): FAIL when discard pile is shuffled when deck is empty\n");
+		printf("smithyEffect(): FAIL when discard pile is shuffled when deck is empty\n");
 	
 	// test if last card in deck is drawn (use same state as before)
 	if (state->hand[0][5] == gardens)
-		printf("testSmithy(): PASS when card is drawn before deck becomes empty\n");
+		printf("smithyEffect(): PASS when card is drawn before deck becomes empty\n");
 	else
-		printf("testSmithy(): FAIL when card is drawn before deck becomes empty\n");
+		printf("smithyEffect(): FAIL when card is drawn before deck becomes empty\n");
 
 
 	// test if deck is added to hand correctly
@@ -86,32 +86,32 @@ void testSmithy(){
 		&& state->hand[0][5] == copper
 		&& state->hand[0][6] == copper
 		&& state->hand[0][7] == estate)
-		printf("testSmithy(): PASS when deck is added to hand correctly\n");
+		printf("smithyEffect(): PASS when deck is added to hand correctly\n");
 	else
-		printf("testSmithy(): FAIL when deck is added to hand correctly\n");
+		printf("smithyEffect(): FAIL when deck is added to hand correctly\n");
 
 	// test if smithy is discarded
 	if (state->hand[0][handPos] != smithy
 	)	
-		printf("testSmithy(): PASS when smithy is discarded\n");
+		printf("smithyEffect(): PASS when smithy is discarded\n");
 	else
-		printf("testSmithy(): FAIL when smithy is discarded\n");
+		printf("smithyEffect(): FAIL when smithy is discarded\n");
 	
 	// test if action unchanged
 	if (tempState->numActions - state->numActions == 0)
-		printf("testSmithy(): PASS when number of action unchanged\n");
+		printf("smithyEffect(): PASS when number of action unchanged\n");
 	else
-		printf("testSmithy(): FAIL when number of action unchanged\n");
+		printf("smithyEffect(): FAIL when number of action unchanged\n");
 	
 	// test if buy remains the same
 	if (tempState->numBuys - state->numBuys == 0)
-		printf("testSmithy(): PASS when number of buys unchanged\n");
+		printf("smithyEffect(): PASS when number of buys unchanged\n");
 	else
-		printf("testSmithy(): FAIL when number of buys unchanged\n");
+		printf("smithyEffect(): FAIL when number of buys unchanged\n");
 	
 }
 
 int main(){
-	testSmithy();
+	testSmithyEffect();
 	return 0;
 }

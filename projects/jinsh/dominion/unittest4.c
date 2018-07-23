@@ -11,29 +11,29 @@ void testIsGameOver(){
  
   initializeGame(3, kingdomCards, 6, state);
   if (!isGameOver(state))
-    printf("testIsGameOver(): PASS when game is not over\n");
+    printf("isGameOver(): PASS when game is not over\n");
 	else
-		printf("testIsGameOver(): FAIL when game is not over\n");
+		printf("isGameOver(): FAIL when game is not over\n");
   
 	state->supplyCount[province] = 0;
 	if (isGameOver(state))
-		printf("testIsGameOver(): PASS when no province is left\n");
+		printf("isGameOver(): PASS when no province is left\n");
 	else
-		printf("testIsGameOver(): FAIL when no province is left\n");
+		printf("isGameOver(): FAIL when no province is left\n");
 
 	state->supplyCount[province] = 3;
 	state->supplyCount[adventurer] = 0;
 	state->supplyCount[gold] = 0;
 	if (!isGameOver(state))
-		printf("testIsGameOver(): PASS when two piles are empty\n");
+		printf("isGameOver(): PASS when two piles are empty\n");
 	else
-		printf("testIsGameOver(): PASS when two piles are empty\n");
+		printf("isGameOver(): PASS when two piles are empty\n");
   
   state->supplyCount[gardens] = 0;
   if (isGameOver(state))
-		printf("testIsGameOver(): PASS when three piles are empty\n");
+		printf("isGameOver(): PASS when three piles are empty\n");
 	else
-		printf("testIsGameOver(): PASS when three piles are empty\n");
+		printf("isGameOver(): PASS when three piles are empty\n");
 
   
 

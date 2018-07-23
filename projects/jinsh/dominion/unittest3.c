@@ -10,24 +10,24 @@ void testBuyCard(){
 
 	state->numBuys = 0;
 	if (buyCard(adventurer, state) == -1)
-		printf("testBuyCard(): PASS when no buy is left\n");
+		printf("buyCard(): PASS when no buy is left\n");
 	else
-		printf("testBuyCard(): FAIL when no buy is left\n");
+		printf("buyCard(): FAIL when no buy is left\n");
 		
 	state->numBuys = 1;
 	state->supplyCount[adventurer] = 0;
 	if (buyCard(adventurer, state) == -1)
-		printf("testBuyCard(): PASS when no supply is left\n");
+		printf("buyCard(): PASS when no supply is left\n");
 	else
-		printf("testBuyCard(): FAIL when no supply is left\n");
+		printf("buyCard(): FAIL when no supply is left\n");
 
 	state->numBuys = 1;
 	state->coins = 2;
 	state->supplyCount[adventurer] = 1;
 	if (buyCard(adventurer, state) == -1)
-		printf("testBuyCard(): PASS when not enough coin to buy\n");
+		printf("buyCard(): PASS when not enough coin to buy\n");
 	else
-		printf("testBuyCard(): FAIL when not enough coin to buy\n");
+		printf("buyCard(): FAIL when not enough coin to buy\n");
 
 	state->numBuys = 1;
 	state->coins = 6;
@@ -38,9 +38,9 @@ void testBuyCard(){
 		&& state->numBuys == 0
 		&& state->supplyCount[adventurer] == 0
 		&& state->discard[0][state->discardCount[0]-1] == adventurer)
-		printf("testBuyCard(): PASS when buy is successful\n");
+		printf("buyCard(): PASS when buy is successful\n");
 	else
-		printf("testBuyCard(): FAIL when buy is successful\n");
+		printf("buyCard(): FAIL when buy is successful\n");
 
 
 

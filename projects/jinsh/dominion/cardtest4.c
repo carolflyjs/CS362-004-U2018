@@ -37,9 +37,9 @@ void testMine(){
 	*tempState = *state;
 	
 	if (cardEffect(mine, 1, gold, choice3, state, handPos, &bonus) == -1)
-		printf("testMine(): PASS when player wants to exchange copper with gold\n");
+		printf("mineEffect(): PASS when player wants to exchange copper with gold\n");
 	else
-		printf("testMine(): FAIL when player wants to exchange copper with gold\n");
+		printf("mineEffect(): FAIL when player wants to exchange copper with gold\n");
 
 	// test if player can exachange silver with gold
 
@@ -63,9 +63,9 @@ void testMine(){
 	*tempState = *state;
 	
 	if (cardEffect(mine, 1, silver, choice3, state, handPos, &bonus) == 0)
-		printf("testMine(): PASS when player wants to exchange copper with silver\n");
+		printf("mineEffect(): PASS when player wants to exchange copper with silver\n");
 	else
-		printf("testMine(): FAIL when player wants to exchange copper with silver\n");
+		printf("mineEffect(): FAIL when player wants to exchange copper with silver\n");
 
 	// test if players can exchange copper with silver
 	
@@ -89,39 +89,39 @@ void testMine(){
 	*tempState = *state;
 	
 	if (cardEffect(mine, 3, gold, choice3, state, handPos, &bonus) == 0)
-		printf("testMine(): PASS when player wants to exchange silver with gold\n");
+		printf("mineEffect(): PASS when player wants to exchange silver with gold\n");
 	else
-		printf("testMine(): FAIL when player wants to exchange silver with gold\n");
+		printf("mineEffect(): FAIL when player wants to exchange silver with gold\n");
 	
 	// test if numActions unchanged
 	if (state->numActions == tempState->numActions)
-		printf("testMine(): PASS when num of actions unchanged\n");
+		printf("mineEffect(): PASS when num of actions unchanged\n");
 	else
-		printf("testMine(): FAIL when num of actions unchanged\n");
+		printf("mineEffect(): FAIL when num of actions unchanged\n");
 
 	// test if numBuys unchanged
 	if (state->numBuys == tempState->numBuys)
-		printf("testMine(): PASS when num of buys unchanged\n");
+		printf("mineEffect(): PASS when num of buys unchanged\n");
 	else
-		printf("testMine(): FAIL when num of buys unchanged\n");
+		printf("mineEffect(): FAIL when num of buys unchanged\n");
 
 	// test if gained card added to hand
 	if (state->hand[0][5] == gold)
-		printf("testMine(): PASS when gained card added to hand\n");
+		printf("mineEffect(): PASS when gained card added to hand\n");
 	else
-		printf("testMine(): FAIL when gained card added to hand\n");
+		printf("mineEffect(): FAIL when gained card added to hand\n");
 
 	// test if discard pile unchanged
 	if (state->discardCount[0] == tempState->discardCount[0])
-		printf("testMine(): PASS when discard pile unchanged\n");
+		printf("mineEffect(): PASS when discard pile unchanged\n");
 	else
-		printf("testMine(): FAIL when discard pile unchanged\n");
+		printf("mineEffect(): FAIL when discard pile unchanged\n");
 	
 	// test if deck pile unchanged
 	if (state->deckCount[0] == tempState->deckCount[0])
-		printf("testMine(): PASS when deck pile unchanged\n");
+		printf("mineEffect(): PASS when deck pile unchanged\n");
 	else
-		printf("testMine(): FAIL when deck pile unchanged\n");
+		printf("mineEffect(): FAIL when deck pile unchanged\n");
 	
 
 	// test if players can exchange a non-treasure card
@@ -146,9 +146,9 @@ void testMine(){
 	*tempState = *state;
 	
 	if (cardEffect(mine, 2, gold, choice3, state, handPos, &bonus) == -1)
-		printf("testMine(): PASS when player wants to exchange non-Treasure card\n");
+		printf("mineEffect(): PASS when player wants to exchange non-Treasure card\n");
 	else
-		printf("testMine(): FAIL when player wants to exchange non-Treasure card\n");
+		printf("mineEffect(): FAIL when player wants to exchange non-Treasure card\n");
 
 	
 }

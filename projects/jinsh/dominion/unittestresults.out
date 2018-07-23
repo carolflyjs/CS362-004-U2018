@@ -2751,10 +2751,10 @@ Creating 'dominion.c.gcov'
         -: 1358:
         -: 1359:	//end of dominion.c
 unittest3.c:
-testBuyCard(): PASS when no buy is left
-testBuyCard(): PASS when no supply is left
-testBuyCard(): PASS when not enough coin to buy
-testBuyCard(): PASS when buy is successful
+buyCard(): PASS when no buy is left
+buyCard(): PASS when no supply is left
+buyCard(): PASS when not enough coin to buy
+buyCard(): PASS when buy is successful
 File 'dominion.c'
 Lines executed:4.63% of 562
 Creating 'dominion.c.gcov'
@@ -4124,10 +4124,10 @@ Creating 'dominion.c.gcov'
         -: 1358:
         -: 1359:	//end of dominion.c
 unittest4.c:
-testIsGameOver(): PASS when game is not over
-testIsGameOver(): PASS when no province is left
-testIsGameOver(): PASS when two piles are empty
-testIsGameOver(): PASS when three piles are empty
+isGameOver(): PASS when game is not over
+isGameOver(): PASS when no province is left
+isGameOver(): PASS when two piles are empty
+isGameOver(): PASS when three piles are empty
 File 'dominion.c'
 Lines executed:17.79% of 562
 Creating 'dominion.c.gcov'
@@ -5497,13 +5497,13 @@ Creating 'dominion.c.gcov'
         -: 1358:
         -: 1359:	//end of dominion.c
 cardtest1.c:
-testSmithy(): FAIL when 3 cards are drawn
-testSmithy(): PASS when discard pile is shuffled when deck is empty
-testSmithy(): PASS when card is drawn before deck becomes empty
-testSmithy(): PASS when deck is added to hand correctly
-testSmithy(): PASS when smithy is discarded
-testSmithy(): PASS when number of action unchanged
-testSmithy(): PASS when number of buys unchanged
+smithyEffect(): FAIL when 3 cards are drawn
+smithyEffect(): PASS when discard pile is shuffled when deck is empty
+smithyEffect(): PASS when card is drawn before deck becomes empty
+smithyEffect(): PASS when deck is added to hand correctly
+smithyEffect(): PASS when smithy is discarded
+smithyEffect(): PASS when number of action unchanged
+smithyEffect(): PASS when number of buys unchanged
 File 'dominion.c'
 Lines executed:23.13% of 562
 Creating 'dominion.c.gcov'
@@ -6873,13 +6873,13 @@ Creating 'dominion.c.gcov'
         -: 1358:
         -: 1359:	//end of dominion.c
 cardtest2.c:
-testAdventurer(): PASS when cards are drawn until two Treansures are revealed
-testAdventurer(): PASS when revealed non-Treausre cards are discarded
-testAdventurer(): FAIL when deck is empty after second Treasure is end of deck
-testAdventurer(): PASS when cards are shuffled when empty
-testAdventurer(): PASS when two treausre cards are added to hand
-testAdventurer(): PASS when num of actions unchaged
-testAdventurer(): PASS when num of buys unchaged
+adventurerEffect(): PASS when cards are drawn until two Treansures are revealed
+adventurerEffect(): PASS when revealed non-Treausre cards are discarded
+adventurerEffect(): FAIL when deck is empty after second Treasure is end of deck
+adventurerEffect(): PASS when cards are shuffled when empty
+adventurerEffect(): PASS when two treausre cards are added to hand
+adventurerEffect(): PASS when num of actions unchaged
+adventurerEffect(): PASS when num of buys unchaged
 File 'dominion.c'
 Lines executed:23.49% of 562
 Creating 'dominion.c.gcov'
@@ -8249,14 +8249,14 @@ Creating 'dominion.c.gcov'
         -: 1358:
         -: 1359:	//end of dominion.c
 cardtest3.c:
-testCouncilRoom(): FAIL when four cards are drawn
-testCouncilRoom(): PASS when four cards on the top of deck are added to hands
-testCouncilRoom(): PASS when num of actions unchanged
-testCouncilRoom(): PASS when num of buys increased by one
-testCouncilRoom(): PASS when council room is discarded
-testCouncilRoom(): PASS when discard pileis not shuffled when not needed
-testCouncilRoom(): PASS when discard pile is shuffled when needed
-testCouncilRoom(): PASS when all other players gain a card
+councilRoomEffect(): FAIL when four cards are drawn
+councilRoomEffect(): PASS when four cards on the top of deck are added to hands
+councilRoomEffect(): PASS when num of actions unchanged
+councilRoomEffect(): PASS when num of buys increased by one
+councilRoomEffect(): PASS when council room is discarded
+councilRoomEffect(): PASS when discard pileis not shuffled when not needed
+councilRoomEffect(): PASS when discard pile is shuffled when needed
+councilRoomEffect(): PASS when all other players gain a card
 File 'dominion.c'
 Lines executed:23.67% of 562
 Creating 'dominion.c.gcov'
@@ -9626,15 +9626,15 @@ Creating 'dominion.c.gcov'
         -: 1358:
         -: 1359:	//end of dominion.c
 cardtest4.c:
-testMine(): FAIL when player wants to exchange copper with gold
-testMine(): PASS when player wants to exchange copper with silver
-testMine(): PASS when player wants to exchange silver with gold
-testMine(): PASS when num of actions unchanged
-testMine(): PASS when num of buys unchanged
-testMine(): FAIL when gained card added to hand
-testMine(): FAIL when discard pile unchanged
-testMine(): PASS when deck pile unchanged
-testMine(): PASS when player wants to exchange non-Treasure card
+mineEffect(): FAIL when player wants to exchange copper with gold
+mineEffect(): PASS when player wants to exchange copper with silver
+mineEffect(): PASS when player wants to exchange silver with gold
+mineEffect(): PASS when num of actions unchanged
+mineEffect(): PASS when num of buys unchanged
+mineEffect(): FAIL when gained card added to hand
+mineEffect(): FAIL when discard pile unchanged
+mineEffect(): PASS when deck pile unchanged
+mineEffect(): PASS when player wants to exchange non-Treasure card
 File 'dominion.c'
 Lines executed:24.91% of 562
 Creating 'dominion.c.gcov'
