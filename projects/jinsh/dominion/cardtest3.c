@@ -30,7 +30,9 @@ void testCouncilRoom(){
 	state->deck[0][1] = sea_hag;
 	state->deck[0][0] = smithy;
 	*tempState = *state;
-
+	
+	//if (!cardEffect(council_room, choice1, choice2, choice3, state, handPos, &bonus)
+		 
 }
 
 int main(){

@@ -96,7 +96,18 @@ void testSmithy(){
 		printf("testSmithy(): PASS when smithy is discarded\n");
 	else
 		printf("testSmithy(): FAIL when smithy is discarded\n");
-
+	
+	// test if action unchanged
+	if (tempState->numActions - state->numActions == 0)
+		printf("testSmithy(): PASS when number of action unchanged\n");
+	else
+		printf("testSmithy(): FAIL when number of action unchanged\n");
+	
+	// test if buy remains the same
+	if (tempState->numBuys - state->numBuys == 0)
+		printf("testSmithy(): PASS when number of buys unchanged\n");
+	else
+		printf("testSmithy(): FAIL when number of buys unchanged\n");
 	
 }
 

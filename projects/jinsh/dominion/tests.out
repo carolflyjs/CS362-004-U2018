@@ -46,13 +46,22 @@ testSmithy(): PASS when discard pile is shuffled when deck is empty
 testSmithy(): PASS when card is drawn before deck becomes empty
 testSmithy(): PASS when deck is added to hand correctly
 testSmithy(): PASS when smithy is discarded
+testSmithy(): PASS when number of action unchanged
+testSmithy(): PASS when number of buys unchanged
 File 'dominion.c'
 Lines executed:23.13% of 562
 Creating 'dominion.c.gcov'
 
 cardtest2.c:
+testAdventurer(): PASS when cards are drawn until two Treansures are revealed
+testAdventurer(): PASS when revealed non-Treausre cards are discarded
+testAdventurer(): FAIL when deck is empty after second Treasure is end of deck
+testAdventurer(): PASS when cards are shuffled when empty
+testAdventurer(): PASS when two treausre cards are added to hand
+testAdventurer(): PASS when num of actions unchaged
+testAdventurer(): PASS when num of buys unchaged
 File 'dominion.c'
-Lines executed:16.01% of 562
+Lines executed:23.49% of 562
 Creating 'dominion.c.gcov'
 
 cardtest3.c:
