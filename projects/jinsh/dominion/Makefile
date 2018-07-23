@@ -25,7 +25,27 @@ tests.out: unittest1.c unittest2.c dominion.c rngs.c
 	gcc -o unittest4 unittest4.c dominion.c rngs.c $(CFLAGS)
 	unittest4 >> tests.out
 	gcov dominion.c >> tests.out
+	
+	echo "cardtest1.c:" >> tests.out
+	gcc -o cardtest1 cardtest1.c dominion.c rngs.c $(CFLAGS)
+	cardtest1 >> tests.out
+	gcov dominion.c >> tests.out
+	
+	echo "cardtest2.c:" >> tests.out
+	gcc -o cardtest2 cardtest2.c dominion.c rngs.c $(CFLAGS)
+	cardtest2 >> tests.out
+	gcov dominion.c >> tests.out
+	
+	echo "cardtest3.c:" >> tests.out
+	gcc -o cardtest3 cardtest3.c dominion.c rngs.c $(CFLAGS)
+	cardtest3 >> tests.out
+	gcov dominion.c >> tests.out
+	
+	echo "cardtest4.c:" >> tests.out
+	gcc -o cardtest4 cardtest4.c dominion.c rngs.c $(CFLAGS)
+	cardtest4 >> tests.out
+	gcov dominion.c >> tests.out
 
 
 clean:
-	rm *.gcda *.gcno *.out 
+	rm *.gcda *.gcno *.out *.gcov 

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dominion.h"
-#include "gameSet.h"
 #include <string.h>
 
 void testIsGameOver(){
@@ -36,7 +35,6 @@ void testIsGameOver(){
 	else
 		printf("testIsGameOver(): PASS when three piles are empty\n");
 
-  initializeGame(3, kingdomCards, 6, state) 
   
 
 }

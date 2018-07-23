@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dominion.h"
-#include "gameSet.h"
 #include <string.h>
 
 void testInitGame(){

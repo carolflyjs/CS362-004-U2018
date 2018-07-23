@@ -1,0 +1,67 @@
+Result for running tests:
+unittest1.c:
+initializeGame(): PASS when test containing 1 player
+initializeGame(): PASS when test containing 5 players
+initializeGame(): PASS when kingdom cards not unique
+initializeGame(): PASS when supply cards correct for 2 players
+initializeGame(): PASS when supply cards correct for 3 players
+initializeGame(): PASS when supply cards correct for 4 players
+initializeGame(): PASS when player hands correct for 2 players
+initializeGame(): PASS when player hands correct for 3 players
+initializeGame(): PASS when player hands correct for 4 players
+File 'dominion.c'
+Lines executed:17.44% of 562
+Creating 'dominion.c.gcov'
+
+unittest2.c:
+updateCoins(): PASS when player has copper and silver
+updateCoins(): PASS when player has gold
+updateCoins(): PASS when player has three coppers and bonus 2
+updateCoins(): PASS when player has no card
+File 'dominion.c'
+Lines executed:1.96% of 562
+Creating 'dominion.c.gcov'
+
+unittest3.c:
+testBuyCard(): PASS when no buy is left
+testBuyCard(): PASS when no supply is left
+testBuyCard(): PASS when not enough coin to buy
+testBuyCard(): PASS when buy is successful
+File 'dominion.c'
+Lines executed:4.63% of 562
+Creating 'dominion.c.gcov'
+
+unittest4.c:
+testIsGameOver(): PASS when game is not over
+testIsGameOver(): PASS when no province is left
+testIsGameOver(): PASS when two piles are empty
+testIsGameOver(): PASS when three piles are empty
+File 'dominion.c'
+Lines executed:17.79% of 562
+Creating 'dominion.c.gcov'
+
+cardtest1.c:
+testSmithy(): FAIL when 3 cards are drawn
+testSmithy(): PASS when discard pile is shuffled when deck is empty
+testSmithy(): PASS when card is drawn before deck becomes empty
+testSmithy(): PASS when deck is added to hand correctly
+testSmithy(): PASS when smithy is discarded
+File 'dominion.c'
+Lines executed:23.13% of 562
+Creating 'dominion.c.gcov'
+
+cardtest2.c:
+File 'dominion.c'
+Lines executed:16.01% of 562
+Creating 'dominion.c.gcov'
+
+cardtest3.c:
+File 'dominion.c'
+Lines executed:16.01% of 562
+Creating 'dominion.c.gcov'
+
+cardtest4.c:
+File 'dominion.c'
+Lines executed:16.01% of 562
+Creating 'dominion.c.gcov'
+
