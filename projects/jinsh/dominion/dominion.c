@@ -655,7 +655,7 @@ int adventurerEffect(struct gameState *state)
 	while(drawntreasure<2){
 		// if the deck is empty, we need to shuffle discard and add to deck
     	//if (state->deckCount[currentPlayer] < 1){
-    	if (state->deckCount[currentPlayer] <= 1){
+    	if (state->deckCount[currentPlayer] < 1){
       		shuffle(currentPlayer, state);
     	}
     	drawCard(currentPlayer, state);
@@ -667,7 +667,7 @@ int adventurerEffect(struct gameState *state)
       		state->handCount[currentPlayer]--; // this should just remove the top card (the most recently drawn one).
       		z++;
     	}
-    	while (z - 1 >= 0) {
+    	while (z - 1 > 0) {
      		state->discard[currentPlayer][state->discardCount[currentPlayer]++] = temphand[z - 1]; // discard all cards in play that have been drawn.
       		z = z - 1;
     	}

@@ -1,0 +1,96 @@
+        -:    0:Source:randomtestcard1.c
+        -:    0:Graph:randomtestcard1.gcno
+        -:    0:Data:randomtestcard1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "dominion.h"
+        -:    2:#include "dominion_helpers.h"
+        -:    3:#include "rngs.h"
+        -:    4:#include <string.h>
+        -:    5:#include <stdlib.h>
+        -:    6:#include <assert.h>
+        -:    7:#include <stdio.h>
+        -:    8:#include <time.h>
+        -:    9:#include <math.h>
+        -:   10:
+        -:   11://Failure global variable counts
+        -:   12:int failedEffects = 0, failedDiscards = 0, failedDraws = 0, failedHands = 0;
+        -:   13:
+        -:   14://function to check the smithyCard
+    10000:   15:void checkSmithyCard(int players, struct gameState *endState){
+    10000:   16:        int r, a, b, c, v, bonus = 0, preHandCount, postHandCount, preDecCount, postDecCount;
+        -:   17:        //randGameame state variable to manually act on the functions actions
+        -:   18:        struct gameState initialState;
+        -:   19:        //copy the passed in randGameame state to initialState
+    10000:   20:        memcpy(&initialState, endState, sizeof(struct gameState));
+        -:   21:        //call the card effect function with the smithy card
+    10000:   22:        r = cardEffect(smithy, 0, 0, 0, endState, 0, &bonus);
+        -:   23:        //check if smithy card failed
+    10000:   24:        if(r)
+    #####:   25:                failedEffects++;
+        -:   26:        //have the player draw 3 cards
+    10000:   27:        a = drawCard(players, &initialState);
+    10000:   28:        b = drawCard(players, &initialState);
+    10000:   29:        c = drawCard(players, &initialState);
+        -:   30:        //call discardCard
+    10000:   31:        v = discardCard(0, players, &initialState, 0);
+        -:   32:        //check if discard card failed
+    10000:   33:        if(v)
+    #####:   34:                failedDiscards++;
+        -:   35:        //get the hand and deck to compare
+    10000:   36:        preHandCount = initialState.handCount[players];
+    10000:   37:        postHandCount = endState->handCount[players];
+    10000:   38:        preDecCount = initialState.deckCount[players];
+    10000:   39:        postDecCount = endState->deckCount[players];
+        -:   40:        //check if any of the draws failed
+    10000:   41:        if (a == -1 && initialState.deckCount[players] != 0)
+    #####:   42:                failedDraws++;
+    10000:   43:        if (b == -1 && initialState.deckCount[players] != 0)
+    #####:   44:                failedDraws++;
+    10000:   45:        if (c == -1 && initialState.deckCount[players] != 0)
+    #####:   46:                failedDraws++;
+        -:   47:        //if the hand counts don't match up increase the faiilure variable
+    10000:   48:        if (!(postHandCount == preHandCount && postDecCount == preDecCount))
+     9999:   49:                failedHands++;
+    10000:   50:}
+        -:   51:
+        -:   52://main function that posts the tests
+        1:   53:int main (){
+        1:   54:        int iterations = 10000, i, n, player, totalFails;
+        -:   55:        struct gameState randGame;
+        -:   56:        //get the time for the seed
+        1:   57:        srand(time(NULL));
+        -:   58:        //initialize the randGame state and randomize the inputs
+    10001:   59:        for (n = 0; n < iterations; n++) {
+263010000:   60:                for (i = 0; i < sizeof(struct gameState); i++)
+263000000:   61:                        ((char*)&randGame)[i] = floor(Random() * 256);
+        -:   62:                //set the random number of players
+    10000:   63:                player = floor(Random() * MAX_PLAYERS);
+        -:   64:                //initialize the variables for the game
+    10000:   65:                randGame.deckCount[player] = floor(Random() * MAX_DECK);
+    10000:   66:                randGame.discardCount[player] = floor(Random() * MAX_DECK);
+    10000:   67:                randGame.handCount[player] = floor(Random() * MAX_HAND);
+    10000:   68:                randGame.playedCardCount = floor(Random() * (MAX_DECK-1));
+    10000:   69:                randGame.whoseTurn = player;
+        -:   70:                //after running the interation, check the card
+    10000:   71:                checkSmithyCard(player,&randGame);
+        -:   72:        }
+        -:   73:        //sum up all the failed results after the iterations
+        1:   74:        totalFails = failedEffects + failedDiscards + failedDraws + failedHands;
+        1:   75:        printf("Some tests failed:\n\n");
+        1:   76:        printf("# Passed Tests: %i\n",iterations - totalFails);
+        1:   77:        printf("# Failed Tests: %i\n",totalFails);
+        -:   78:
+        -:   79:        //if there are no fails in the random test
+        1:   80:        if (totalFails == 0)
+    #####:   81:                printf ("All Tests Passed\n\n");
+        -:   82:        //else print out what had failed
+        -:   83:        else{
+        1:   84:                printf("Test Failure Results:\n\n");
+        1:   85:                printf("discardCard() failed: %i\n", failedDiscards);
+        1:   86:                printf("drawCard() failed: %i\n", failedDraws);
+        1:   87:                printf("cardEffect() failed: %i\n", failedEffects);
+        1:   88:                printf("Hand/Deck Count mismatch: %i\n", failedHands);
+        -:   89:        }
+        1:   90:        return 0;
+        -:   91:}

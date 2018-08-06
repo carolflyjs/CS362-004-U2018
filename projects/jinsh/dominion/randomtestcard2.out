@@ -1,3 +1,24 @@
+Some tests failed:
+
+# Passed Tests: 0
+# Failed Tests: 10000
+Test Failure Results:
+
+drawCard() failed: 0
+cardEffect() failed: 0
+discardCard() failed: 0
+numBuys Count mismatch: 0
+Other players hand/deck count mismatch: 0
+Selected player hand/deck count mismatch: 10000
+COVERAGE: randomtestcard2.c:
+File 'randomtestcard2.c'
+Lines executed:86.49% of 74
+Creating 'randomtestcard2.c.gcov'
+
+File 'dominion.c'
+Lines executed:12.46% of 562
+Creating 'dominion.c.gcov'
+
         -:    0:Source:dominion.c
         -:    0:Graph:dominion.gcno
         -:    0:Data:dominion.gcda

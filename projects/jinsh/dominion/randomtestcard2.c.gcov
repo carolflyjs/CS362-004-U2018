@@ -1,0 +1,127 @@
+        -:    0:Source:randomtestcard2.c
+        -:    0:Graph:randomtestcard2.gcno
+        -:    0:Data:randomtestcard2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "dominion.h"
+        -:    2:#include "dominion_helpers.h"
+        -:    3:#include "rngs.h"
+        -:    4:#include <string.h>
+        -:    5:#include <stdlib.h>
+        -:    6:#include <assert.h>
+        -:    7:#include <stdio.h>
+        -:    8:#include <time.h>
+        -:    9:#include <math.h>
+        -:   10:
+        -:   11://Failure global variable counts
+        -:   12:int failedEffects = 0, failedDiscards = 0, failedDraws = 0, failedBuys = 0, failedHands = 0, failedHands2 = 0;
+        -:   13:
+        -:   14:// function to check the council_roomCard
+    10000:   15:void checkCouncil_RoomCard(int p, struct gameState *endState) {
+    10000:   16:        int r, a, b, c, d, w, v, i, bonus = 0, preHandCount, postHandCount, preDeckCount, postDeckCount;
+        -:   17:        //randGameame state variable to manually act on the functions actions
+        -:   18:        struct gameState initialState;
+        -:   19:        // copy the passed in game state to initialState
+    10000:   20:        memcpy(&initialState,endState,sizeof(struct gameState));
+    10000:   21:        r = cardEffect(council_room, 0, 0, 0, endState, 0, &bonus);
+        -:   22:        //check if council_room card failed
+    10000:   23:        if(r)
+    #####:   24:                failedEffects++;
+        -:   25:        //have the player draw 4 cards
+    10000:   26:        a = drawCard(p, &initialState);
+    10000:   27:        b = drawCard(p, &initialState);
+    10000:   28:        c = drawCard(p, &initialState);
+    10000:   29:        d = drawCard(p, &initialState);
+        -:   30:        //set the initial buy state
+    10000:   31:        initialState.numBuys++;
+        -:   32:        //for loop so each player can draw a card
+    40008:   33:        for (i = 0; i < initialState.numPlayers; i++) {
+    30008:   34:                if (i != p) {
+    20008:   35:                        w = drawCard(i, &initialState);
+        -:   36:                        //check draw card for failure
+    20008:   37:                        if (w == -1 && initialState.deckCount[i] != 0)
+    #####:   38:                                failedDraws++;
+        -:   39:                }
+        -:   40:        }
+        -:   41:        //discard a card from player
+    10000:   42:        v = discardCard(0, p, &initialState, 0);
+    10000:   43:        if(v)
+    #####:   44:                failedDiscards++;
+        -:   45:        //get the hand and deck to compare
+    10000:   46:        preHandCount = initialState.handCount[p];
+    10000:   47:        postHandCount = endState->handCount[p];
+    10000:   48:        preDeckCount = initialState.deckCount[p];
+    10000:   49:        postDeckCount = endState->deckCount[p];
+        -:   50:        //check the numBuys
+    10000:   51:        if (initialState.numBuys != endState->numBuys)
+    #####:   52:                failedBuys++;
+        -:   53:        //check if any drawcard failed
+    10000:   54:        if (a == -1 && initialState.deckCount[p] != 0)
+    #####:   55:                failedDraws++;
+    10000:   56:        if (b == -1 && initialState.deckCount[p] != 0)
+    #####:   57:                failedDraws++;
+    10000:   58:        if (c == -1 && initialState.deckCount[p] != 0)
+    #####:   59:                failedDraws++;
+    10000:   60:        if (d == -1 && initialState.deckCount[p] != 0)
+    #####:   61:                failedDraws++;
+        -:   62:        //if the hand counts don't match up increase the faiilure variable
+    10000:   63:        if (!(postHandCount == preHandCount && postDeckCount == preDeckCount))
+    10000:   64:                failedHands++;
+        -:   65:        //for loop that checks both player's hands
+    40008:   66:        for (i = 0; i < initialState.numPlayers; i++) {
+    30008:   67:                if (i != p)
+    20008:   68:                        if (!(endState->handCount[i] == initialState.handCount[i] && endState->deckCount[i] == initialState.deckCount[i]))
+    #####:   69:                                failedHands2++;
+        -:   70:        }
+    10000:   71:}
+        -:   72://main function that posts the tests
+        1:   73:int main () {
+        1:   74:        int iterations = 10000, i, n, player, deckCount, handCount, discardCount, totalFails;
+        1:   75:        int numberOfPlayers[] = {2,3,4};
+        -:   76:        struct gameState randGame;
+        -:   77:        //get the time for the seed
+        1:   78:        srand(time(NULL));
+        -:   79:        //initialize the randGame state and randomize the inputs
+    10001:   80:        for (n = 0; n < iterations; n++) {
+263010000:   81:                for (i = 0; i < sizeof(struct gameState); i++)
+263000000:   82:                        ((char*)&randGame)[i] = floor(Random() * 256);
+        -:   83:                //set the random number of players and set player's initial variables
+    10000:   84:                randGame.numPlayers = numberOfPlayers[rand() % 3];
+        -:   85:                //initialize the variables for the game
+    10000:   86:                randGame.numBuys = 1;
+    10000:   87:                randGame.playedCardCount = floor(Random() * (MAX_DECK-1));
+    10000:   88:                player = randGame.numPlayers - 2;
+    10000:   89:                deckCount = floor(Random() * MAX_DECK);
+    10000:   90:                handCount = floor(Random() * MAX_HAND);
+    10000:   91:                discardCount = floor(Random() * MAX_DECK);
+    10000:   92:                randGame.whoseTurn = player;
+        -:   93:                //set the initial variables for all the players
+    40008:   94:                for (i = 0; i < randGame.numPlayers; i++) {
+    30008:   95:                        randGame.deckCount[i] = deckCount;
+    30008:   96:                        randGame.handCount[i] = handCount;
+    30008:   97:                        randGame.discardCount[i] = discardCount;
+        -:   98:                }
+        -:   99:                //after running the interation, check the card
+    10000:  100:                checkCouncil_RoomCard(player,&randGame);
+        -:  101:        }
+        -:  102:        //sum up all the failed results after the iterations
+        1:  103:        totalFails = failedEffects + failedDiscards + failedDraws + failedHands + failedBuys;
+        1:  104:        printf("Some tests failed:\n\n");
+        1:  105:        printf("# Passed Tests: %i\n",iterations - totalFails);
+        1:  106:        printf("# Failed Tests: %i\n",totalFails);
+        -:  107:
+        -:  108:        //if there are no fails in the random test
+        1:  109:        if (totalFails == 0)
+    #####:  110:                printf ("All Tests Passed\n\n");
+        -:  111:        //else print out what had failed
+        -:  112:        else {
+        1:  113:                printf("Test Failure Results:\n\n");
+        1:  114:                printf("drawCard() failed: %i\n",failedDraws);
+        1:  115:                printf("cardEffect() failed: %i\n",failedEffects);
+        1:  116:                printf("discardCard() failed: %i\n",failedDiscards);
+        1:  117:                printf("numBuys Count mismatch: %i\n",failedBuys);
+        1:  118:                printf("Other players hand/deck count mismatch: %i\n",failedHands2);
+        1:  119:                printf("Selected player hand/deck count mismatch: %i\n",failedHands);
+        -:  120:        }
+        1:  121:        return 0;
+        -:  122:}
