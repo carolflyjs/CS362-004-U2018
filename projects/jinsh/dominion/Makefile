@@ -32,4 +32,4 @@ randomadventurer: randomadventurer.c dominion.c rngs.c
 randomtests: randomadventurer randomtestcard1 randomtestcard2
 
 clean:
-	rm *.gcda *.gcno *.out *.gcov
+	rm *.gcda *.gcno *.out *.gcov randomtestcard1 randomtestcard2 randomadventurer
