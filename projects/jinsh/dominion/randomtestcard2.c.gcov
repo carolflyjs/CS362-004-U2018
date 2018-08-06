@@ -35,11 +35,11 @@
         -:   30:        //set the initial buy state
     10000:   31:        initialState.numBuys++;
         -:   32:        //for loop so each player can draw a card
-    40008:   33:        for (i = 0; i < initialState.numPlayers; i++) {
-    30008:   34:                if (i != p) {
-    20008:   35:                        w = drawCard(i, &initialState);
+    40086:   33:        for (i = 0; i < initialState.numPlayers; i++) {
+    30086:   34:                if (i != p) {
+    20086:   35:                        w = drawCard(i, &initialState);
         -:   36:                        //check draw card for failure
-    20008:   37:                        if (w == -1 && initialState.deckCount[i] != 0)
+    20086:   37:                        if (w == -1 && initialState.deckCount[i] != 0)
     #####:   38:                                failedDraws++;
         -:   39:                }
         -:   40:        }
@@ -66,11 +66,11 @@
     #####:   61:                failedDraws++;
         -:   62:        //if the hand counts don't match up increase the faiilure variable
     10000:   63:        if (!(postHandCount == preHandCount && postDeckCount == preDeckCount))
-    10000:   64:                failedHands++;
+     9998:   64:                failedHands++;
         -:   65:        //for loop that checks both player's hands
-    40008:   66:        for (i = 0; i < initialState.numPlayers; i++) {
-    30008:   67:                if (i != p)
-    20008:   68:                        if (!(endState->handCount[i] == initialState.handCount[i] && endState->deckCount[i] == initialState.deckCount[i]))
+    40086:   66:        for (i = 0; i < initialState.numPlayers; i++) {
+    30086:   67:                if (i != p)
+    20086:   68:                        if (!(endState->handCount[i] == initialState.handCount[i] && endState->deckCount[i] == initialState.deckCount[i]))
     #####:   69:                                failedHands2++;
         -:   70:        }
     10000:   71:}
@@ -96,10 +96,10 @@
     10000:   91:                discardCount = floor(Random() * MAX_DECK);
     10000:   92:                randGame.whoseTurn = player;
         -:   93:                //set the initial variables for all the players
-    40008:   94:                for (i = 0; i < randGame.numPlayers; i++) {
-    30008:   95:                        randGame.deckCount[i] = deckCount;
-    30008:   96:                        randGame.handCount[i] = handCount;
-    30008:   97:                        randGame.discardCount[i] = discardCount;
+    40086:   94:                for (i = 0; i < randGame.numPlayers; i++) {
+    30086:   95:                        randGame.deckCount[i] = deckCount;
+    30086:   96:                        randGame.handCount[i] = handCount;
+    30086:   97:                        randGame.discardCount[i] = discardCount;
         -:   98:                }
         -:   99:                //after running the interation, check the card
     10000:  100:                checkCouncil_RoomCard(player,&randGame);
