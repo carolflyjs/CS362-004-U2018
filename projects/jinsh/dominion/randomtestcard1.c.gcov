@@ -51,7 +51,7 @@
     #####:   46:                failedDraws++;
         -:   47:        //if the hand counts don't match up increase the faiilure variable
     10000:   48:        if (!(postHandCount == preHandCount && postDecCount == preDecCount))
-     9999:   49:                failedHands++;
+    10000:   49:                failedHands++;
     10000:   50:}
         -:   51:
         -:   52://main function that posts the tests

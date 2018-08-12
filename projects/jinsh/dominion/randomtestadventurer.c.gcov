@@ -82,7 +82,7 @@
     10000:   77:        postDiscCount = endState->discardCount[players];
         -:   78:        //if the hand counts don't match up increase the faiilure variable
     10000:   79:        if (!(postHandCount == preHandCount && postDecCount == preDecCount && postDiscCount == preDiscCount))
-     9867:   80:                failedHands++;
+    #####:   80:                failedHands++;
     10000:   81:}
         -:   82:
         -:   83://main function that posts the tests
@@ -128,15 +128,15 @@
         -:  123:        }
         -:  124:        //if there are no fails in the random test
         1:  125:        if (totalFails == 0)
-    #####:  126:                printf ("All Tests Passed\n\n");
+        1:  126:                printf ("All Tests Passed\n\n");
         -:  127:        //else print out what had failed
         -:  128:        else{
-        1:  129:                printf("Test Failure Results:\n\n");
-        1:  130:                printf("shuffle() failed: %i\n", failedShuffles);
-        1:  131:                printf("drawCard() failed: %i\n", failedDraws);
-        1:  132:                printf("cardEffect() failed: %i\n", failedEffects);
-        1:  133:                printf("Treasure Count mismatch: %i\n", failedTreasures);
-        1:  134:                printf("Hand/Deck Count mismatch: %i\n", failedHands);
+    #####:  129:                printf("Test Failure Results:\n\n");
+    #####:  130:                printf("shuffle() failed: %i\n", failedShuffles);
+    #####:  131:                printf("drawCard() failed: %i\n", failedDraws);
+    #####:  132:                printf("cardEffect() failed: %i\n", failedEffects);
+    #####:  133:                printf("Treasure Count mismatch: %i\n", failedTreasures);
+    #####:  134:                printf("Hand/Deck Count mismatch: %i\n", failedHands);
         -:  135:        }
         1:  136:        return 0;
         -:  137:}
